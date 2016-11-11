@@ -1,0 +1,3 @@
+rootProject.name = 'androidToast'
+
+include ':app'
