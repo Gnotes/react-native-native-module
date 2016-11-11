@@ -2,6 +2,22 @@
 
 react-native 调用原生 `android` 模块 `Toast` 学习笔记
 
+- [初始化react-native项目](## 参考官方文档初始化一个react-native项目)
+- [运行命令查看项目](## 运行命令查看项目)
+- [接入Android原生模块](## 接入Android原生模块)
+  - [android目录结构](### android目录结构)
+  - [Java & ReactNative 基本类型对照](### Java & ReactNative 基本类型对照)
+  - [第一步：创建模块类](### 第一步：创建模块类)
+  - [第二步：注册模块](### 第二步：注册模块)
+  - [第三步：添加注册类](### 第三步：添加注册类)
+  - [第四步：修改react-native代码引入原生模块](### 第四步：修改react-native代码引入原生模块)
+- [运行程序](## 运行程序)  
+- [回调函数](## react-native回调函数)
+- [触发事件](## 触发事件)
+- [曾走过的路](## 曾走过的路)
+- [参考文档](## 参考文档)
+
+
 ## 参考官方文档初始化一个react-native项目
 [初始化项目](https://facebook.github.io/react-native/docs/getting-started.html)   
 
@@ -333,6 +349,25 @@ componentWillMount(){
 ### 效果如下：
 
 <img src="./images/g.gif" width="400"/>
+
+## 曾走过的路
+
+*曾想在返回的方法中定义一个`Object` 类型的变量,但pa! 报错了！！不支持滴,请查看类型对应表格*
+```
+cloudn't find argument class : Object
+```
+------
+*参照官方文档时，各种类找不到，瞬间醉了！*
+```
+# 百度吧，一般不管用
+# stackoverflow，Google 有时可以搜到，尼玛！英文。。。
+# github
+# react-native 源码 ！！！这里面有个`ReactAndroid`的目录就是各种`Java`类啦
+  react-native/ReactAndroid/src/main/java/com/facebook/
+
+  https://github.com/facebook/react-native
+```
+<img src="./images/h.png" width="400"/>
 
 
 ## 参考文档
