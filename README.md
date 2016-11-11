@@ -42,6 +42,20 @@ react-native run-android
 
 ### 注意：引入包的名称不要弄错了
 
+### Java & ReactNative 基本类型对照
+
+| Java | RN |
+|:------|:------|
+|Boolean|Bool|
+|Integer|Number|
+|Double|Number|
+|Float|Number|
+|String|String|
+|Callback|function|
+|ReadableMap|Object|
+|ReadableArray|Array|
+
+
 ### 第一步：创建模块类
 在androidtoast目录下，创建一个ToastModule.java的类  
 
@@ -219,7 +233,7 @@ AppRegistry.registerComponent('androidToast', () => androidToast);
 
 ```
 
-### 运行程序
+## 运行程序
 
 ```shell
 react-native run-android
@@ -229,6 +243,97 @@ react-native run-android
 ### 效果如下：
 
 <img src="./images/f.png" width="200"/>
+
+## react-native回调函数
+
+*java中提供了一个 `Callback` 的数据类型对应了react-native中的 `function` *  
+
+*具体操作就是在@ReactMethod注解的返回函数中 添加`类型`为 `Callback`的参数，并通过 `invoke(...params)`调用*  
+
+*RN中通过调用show方法时提供对应的回调函数就可以了，😄*
+
+- 修改`ToastModule.java`代码中`show()`方法，添加回调
+
+*注意引包！！ import com.facebook.react.bridge.Callback;*
+
+```java
+// 说明下：count，flag是我自定义的变量
+
+@ReactMethod
+public void show(String message, int duration ,Callback successCallback, Callback errorCallback) {
+    Toast.makeText(getReactApplicationContext(), message, duration).show();
+    // 通过invoke调用，随便你传参
+    if(flag) successCallback.invoke("success", ++count);
+    else errorCallback.invoke("error", ++count);
+    flag = !flag;
+}
+
+```
+
+- 修改`index.android.js`中调用函数  
+
+```js
+
+<TouchableOpacity onPress={()=>{
+  toast.show('Toast message',toast.SHORT,(message,count)=>{console.log("==",message,count)},(message,count)=>{console.log("++",message,count)});
+}}>
+
+```
+👌，试试看吧～～
+
+## 触发事件
+
+*首先我们定义一个发送事件的方法*
+
+```java
+
+private void sendEvent(ReactContext reactContext, String eventName, @Nullable WritableMap params){
+    reactContext
+    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+    .emit(eventName, params);
+}
+
+```
+
+*引包*
+
+```java
+import javax.annotation.Nullable;
+
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.ReactContext;
+
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+```
+
+*继续改造 `show` 方法，添加参数，并调用预先定义的方法*
+
+```java
+
+// 静态方法
+WritableMap map = Arguments.createMap();
+map.putBoolean("boolean",true);
+map.putDouble("double",0.003);
+map.putString("string","string");
+sendEvent(this.reactContext, "eventName",map);
+```
+
+*改造`index.android.js 啦`,添加事件监听，这里的 `eventName` 就是我们 `sendEvent` 中定义的事件名称*
+
+```js
+
+componentWillMount(){
+  DeviceEventEmitter.addListener('eventName',(e)=>{
+    console.log(e)
+  });
+}
+```
+
+### 效果如下：
+
+<img src="./images/g.gif" width="400"/>
+
 
 ## 参考文档
 [江清清 ModulesDemo](https://github.com/jiangqqlmj/ModulesDemo)  

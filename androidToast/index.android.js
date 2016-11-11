@@ -11,18 +11,25 @@ import {
   Text,
   View,
   TouchableOpacity,
-  NativeModules
+  NativeModules,
+  DeviceEventEmitter
 } from 'react-native';
 
 let toast = NativeModules.ToastNative;
 
 export default class androidToast extends Component {
+  componentWillMount(){
+    DeviceEventEmitter.addListener('eventName',(e)=>{
+      console.log(e)
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>react-native 调用android原生模块</Text>
         <TouchableOpacity onPress={()=>{
-          toast.show('Toast message',toast.SHORT);
+          toast.show('Toast message',toast.SHORT,(message,count)=>{console.log("==",message,count)},(message,count)=>{console.log("++",message,count)});
         }}>
           <Text style={styles.btn}>Click Me</Text>
         </TouchableOpacity>
