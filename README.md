@@ -8,11 +8,11 @@ react-native 调用原生 `android` 模块 `Toast` 学习笔记
 - [运行命令查看项目](#运行命令查看项目)
 - [接入Android原生模块](#接入Android原生模块)
   - [android目录结构](#android目录结构)
-  - [基本类型对照](#基本类型对照)
-  - [第一步 创建模块类](#第一步创建模块类)
-  - [第二步 注册模块](#第二步注册模块)
-  - [第三步 添加注册类](#第三步添加注册类)
-  - [第四步 修改react-native代码引入原生模块](#第四步修改react-native代码引入原生模块)
+  - [基本类型对照](#java-react-native基本类型对照)
+  - [第一步 创建模块类](#第一步-创建模块类)
+  - [第二步 注册模块](#第二步-注册模块)
+  - [第三步 添加注册类](#第三步-添加注册类)
+  - [第四步 修改react-native代码引入原生模块](#第四步-修改react-native代码引入原生模块)
 - [运行程序](#运行程序)  
 - [回调函数](#react-native回调函数)
 - [触发事件](#触发事件)
@@ -60,7 +60,7 @@ react-native run-android
 
 ### 注意：引入包的名称不要弄错了
 
-### 基本类型对照
+### Java React-native基本类型对照
 
 | Java | RN |
 |:------|:------|
@@ -74,7 +74,7 @@ react-native run-android
 |ReadableArray|Array|
 
 
-### 第一步创建模块类
+### 第一步 创建模块类
 在androidtoast目录下，创建一个ToastModule.java的类  
 
 ```java
