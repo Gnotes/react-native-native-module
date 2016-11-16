@@ -8,7 +8,7 @@ react-native 调用原生 `android` 模块 `Toast` 学习笔记
 - [运行命令查看项目](#运行命令查看项目)
 - [接入Android原生模块](#接入Android原生模块)
   - [android目录结构](#android目录结构)
-  - [Java-ReactNative基本类型对照](#Java-ReactNative基本类型对照)
+  - [Java和ReactNative基本类型对照](#Java和ReactNative基本类型对照)
   - [第一步 创建模块类](#第一步创建模块类)
   - [第二步 注册模块](#第二步注册模块)
   - [第三步 添加注册类](#第三步添加注册类)
@@ -60,7 +60,7 @@ react-native run-android
 
 ### 注意：引入包的名称不要弄错了
 
-### Java-ReactNative基本类型对照
+### Java和ReactNative基本类型对照
 
 | Java | RN |
 |:------|:------|
