@@ -541,3 +541,4 @@ http://bbs.reactnative.cn/topic/1429/rctloginfo-%E6%8A%A5%E9%94%99%E7%9A%84%E9%9
 [react-native IOS 中文](http://reactnative.cn/docs/0.35/native-modules-ios.html#content)  
 [react-native IOS 官方英文](https://facebook.github.io/react-native/docs/native-modules-ios.html)  
 [RN-Resource-ipk github](https://github.com/ipk2015/RN-Resource-ipk)  
+[writing-native-modules-for-react-native](https://www.promptworks.com/blog/writing-native-modules-for-react-native)  
